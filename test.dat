@@ -1,0 +1,24 @@
+#Dies ist eine Beispiel Datei mit Werten zum Ausprobieren
+# Kommazahlen werden mit Punkt getrennt// Spalten werden mit leerzeichen getrennt
+# mit hashtags kann man kommentieren
+#
+#Anzahl		Zeit 	Weg 
+#
+1 0.5 10
+2 0.4 10
+3 0.6 10
+4 0.9 10
+5 0.3 10
+6 0.5 10
+7 0.4 10
+8 0.7 10
+9 0.3 10
+10 0.5 10
+11 0.3 10
+12 0.1 10
+13 0.45 10
+14 0.66 10
+15 0.78 10
+16 0.53 10
+17 0.55 10
+18 0.5 10
