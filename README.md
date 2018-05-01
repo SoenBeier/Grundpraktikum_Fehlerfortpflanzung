@@ -1,0 +1,2 @@
+# Grundpraktikum_Fehlerfortpflanzung
+zur Berechnung der Standardabweichung bei Fehlerfortpflanzung im Grundpraktikum
