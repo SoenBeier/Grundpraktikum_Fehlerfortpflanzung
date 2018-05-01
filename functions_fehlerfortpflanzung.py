@@ -53,5 +53,4 @@ def get_vertrauensabweichung_mittelwert(werte,standardabweichung):
     
     
     
-    
-    
+   
