@@ -42,14 +42,27 @@ print("Reihenfolge: Variabel, Mittelwert, Standardabweichung, S_d_M, V_d_M:", in
 
 ### Berechnung_Ungenauigkeit ###
 u_y = 0
+
 for k in range(0,int(len(info)/5)):
+    #f nach einer der Variabel ableiten
     diff_f = diff(f, info[k*5])
-    diff_f = lambdify(info[k*5],diff_f)
-    diff_f_wert = diff_f(info[(k*5)+1])
-    u_y = u_y + abs(diff_f_wert * info[(k*5)+2])
+    
+    print()
+    print("diff(f nach", info[k*5], "): ", diff_f, "mit", info[k*5],"=",info[k*5+1],"(Mittelwert)")
+    
+    #Mittelwert in abgeleitete Funktion einsetzen und berechnen
+    diff_f = lambdify(info[k*5],diff_f) #info[k*5] = Name der Variabel
+    diff_f_wert = diff_f(info[(k*5)+1]) #info[(k*5)+1] = Mittelwert
+    
+    print("u_",info[k*5],": ",info[k*5+2])
+    print("(",k,"):","|",diff(f, info[k*5]),"*","u_",info[k*5],"|","=",abs(diff_f_wert * info[(k*5)+2]))
+    
+    #ausgerechneter Wert mit der Standardabweichung multiplizieren und mit dem bisherigem u_y addieren
+    u_y = u_y + abs(diff_f_wert * info[(k*5)+2]) #info[(k*5)+2] = Standardabweichung
+    
 
-
-print(u_y)
+print()
+print("u_y =", u_y, ("((1),(2),(3),(4).... addiert)"))
 
     
 
