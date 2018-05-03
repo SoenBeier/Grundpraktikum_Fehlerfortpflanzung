@@ -18,8 +18,18 @@ def get_Spalten():
 def get_Zeilen():
     return 5
 
+data = np.loadtxt('asdf.dat')# Daten aus einfacher Textdatei laden. Hier einfach namen der dat datei einfügen.
+numrows = len(data[:,1])
+numcolumns = len(data[1,:])
+liste = []
+for i in range(0,numcolumns):
+    hans = []
+    liste.append(hans)
+    for k in range(0,numrows):
+        hans.append(data[k,i])
 
 alle_werte = [[1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,2,4,5,1],[2,4,5]]
+# !alle_werte=liste! <- kann man auf die Liste setzen um auf die Werte der dat datei zugreifen zu können. 
 variabeln = ["x","y","z"]
 info = []
 ### Werte analysieren ###
