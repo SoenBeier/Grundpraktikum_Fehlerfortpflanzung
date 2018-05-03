@@ -51,6 +51,18 @@ def get_vertrauensabweichung_mittelwert(werte,standardabweichung):
     vdm = get_t(len(werte)) * standardabweichung / py.sqrt(len(werte))
     return vdm
     
-    
-    
+def Graph(mittelwert,s_d_m,v_d_m,s):#definiert die Funktion die einen Graph erstellt
+    fig,ax = py.subplots(ncols=1,nrows=1,num="Auswertung") #figur 1
+    ax.set_title("Auswertung") #Titel
+    #hier folgen die Einzelnen PLots
+    ax.plot(mittelwert,'+',label='Mittelwert')   
+    ax.plot(s_d_m,'+',label="$\sigma$-Standartabweichung")
+    ax.plot(v_d_m,'+',label="Vertrauensintervall")
+    ax.plot(alle_werte[1],'+',label='Alle Werte')
+    #verschönerung des Plottes
+    py.xlabel('t in s',fontsize=16)
+    py.ylabel('Messwerte',fontsize=16)
+    py.legend(loc='best')
+    #Plot Speichern
+    fig.savefig("Auswertung.png",dpi=300)
    
