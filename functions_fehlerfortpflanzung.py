@@ -51,18 +51,25 @@ def get_vertrauensabweichung_mittelwert(werte,standardabweichung):
     vdm = get_t(len(werte)) * standardabweichung / py.sqrt(len(werte))
     return vdm
     
-def Graph(mittelwert,s_d_m,v_d_m,s):#definiert die Funktion die einen Graph erstellt
-    fig,ax = py.subplots(ncols=1,nrows=1,num="Auswertung") #figur 1
-    ax.set_title("Auswertung") #Titel
-    #hier folgen die Einzelnen PLots
-    ax.plot(mittelwert,'+',label='Mittelwert')   
-    ax.plot(s_d_m,'+',label="$\sigma$-Standartabweichung")
-    ax.plot(v_d_m,'+',label="Vertrauensintervall")
-    ax.plot(alle_werte[1],'+',label='Alle Werte')
-    #verschönerung des Plottes
-    py.xlabel('t in s',fontsize=16)
-    py.ylabel('Messwerte',fontsize=16)
-    py.legend(loc='best')
-    #Plot Speichern
-    fig.savefig("Auswertung.png",dpi=300)
+def Graph(mittelwert,s_d_m,v_d_m,alle_werte):
+    x=py.linspace(-1,0.1,len(alle_werte[1]))
+    y=(x/x)*mittelwert 
+    s_d_m1=(x/x)*(s_d_m+mittelwert)
+    s_d_m2=(x/x)*(mittelwert-s_d_m)
+    v_d_m1=(x/x)*(v_d_m+mittelwert)
+    v_d_m2=(x/x)*(mittelwert-v_d_m)
+    fig,ax = py.subplots(ncols=1,nrows=1,num="Auswertung",figsize=(16,9))
+    ax.set_title("Auswertung",fontsize=20)
+    ax.plot(y,'-',label='Mittelwert',color="blue")   
+    ax.plot(s_d_m1,'--',label="$\sigma$-Standartabweichung",color="red")
+    ax.plot(s_d_m2,'--',label="$\sigma$-Standartabweichung",color="red")
+    ax.plot(v_d_m1,'--',label="Vertrauensintervall",color="green")
+    ax.plot(v_d_m2,'--',label="Vertrauensintervall",color="green")
+    ax.plot(alle_werte[1],'+',label='Alle Werte',color="orange")
+    py.xlabel('t in s',fontsize=20)
+    py.ylabel('Messwerte',fontsize=20)
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+    ax.legend(bbox_to_anchor=(1, 1))
+    fig.savefig("Auswertung.png",dpi=600)
    
